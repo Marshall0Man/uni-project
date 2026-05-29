@@ -1,5 +1,5 @@
 import processing.serial.*;
-import java.net.*; // استدعاء مكتبة الشبكات
+import java.net.*; 
 
 Serial myPort;        
 String data = "";     
@@ -60,7 +60,7 @@ void draw() {
   drawDualDisplay(centerX, height * 0.85);
 }
 
-// دالة إرسال الرسائل عبر الـ UDP إلى Node-RED
+
 void sendUdpMessage(String message) {
   try {
     byte[] sendData = message.getBytes();
@@ -197,18 +197,18 @@ void serialEvent(Serial myPort) {
               
               myPort.write(str(displayedMinDistance) + "\n"); 
               
-              // --- منطق الخطر ومنع التكرار المحدث ---
+              
               if (displayedMinDistance <= 50.0 && displayedMinDistance > 0) {
-                // إذا كان الجسم قريب، ولم نقم بإرسال إشعار بعد خلال هذه المواجهة
+                
                 if (!alarmSent) { 
                   sendUdpMessage("WARNING: Object detected at " + displayedMinDistance + " cm");
-                  alarmSent = true; // نرفع الراية؛ تم الإرسال ولن يتكرر!
+                  alarmSent = true; 
                 }
               } else {
-                // إذا أصبحت المسافة آمنة (أكبر من 50 سم أو خالية)
+                
                 if (alarmSent) {
-                  sendUdpMessage("SECURE"); // إرسال طمأنينة لنود ريد (اختياري)
-                  alarmSent = false; // إعادة تصفير الراية؛ الرادار جاهز للمواجهة القادمة!
+                  sendUdpMessage("SECURE"); 
+                  alarmSent = false; 
                 }
               }
               
