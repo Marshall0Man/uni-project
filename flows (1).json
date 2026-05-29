@@ -1,0 +1,103 @@
+[
+    {
+        "id": "d650b7d30eefb124",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2245189a9767801b",
+        "type": "udp in",
+        "z": "d650b7d30eefb124",
+        "name": "",
+        "iface": "",
+        "port": "1234",
+        "ipv": "udp4",
+        "multicast": "false",
+        "group": "",
+        "datatype": "utf8",
+        "x": 240,
+        "y": 420,
+        "wires": [
+            [
+                "b83ee13e8173ca14"
+            ]
+        ]
+    },
+    {
+        "id": "b83ee13e8173ca14",
+        "type": "switch",
+        "z": "d650b7d30eefb124",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "WARNING",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 410,
+        "y": 420,
+        "wires": [
+            [
+                "4e06c32d2a2b4609",
+                "f6ec367f620e849b"
+            ]
+        ]
+    },
+    {
+        "id": "4e06c32d2a2b4609",
+        "type": "blynk-iot-out-write",
+        "z": "d650b7d30eefb124",
+        "name": "",
+        "pin": "1",
+        "pinmode": 0,
+        "client": "6f2d20f347a816dc",
+        "x": 620,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "f6ec367f620e849b",
+        "type": "blynk-iot-logevent",
+        "z": "d650b7d30eefb124",
+        "name": "warning",
+        "eventcode": "warning",
+        "description": "warning",
+        "client": "6f2d20f347a816dc",
+        "x": 600,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "6f2d20f347a816dc",
+        "type": "blynk-iot-client",
+        "name": "",
+        "path": "blynk.cloud",
+        "key": "nt9YEIWNkIEd4AyZdhbmDrPOyhljV40p",
+        "tmpl": "TMPL6uW9RIZMa",
+        "dbg_all": false,
+        "dbg_log": false,
+        "dbg_prop": false,
+        "dbg_sync": false,
+        "dbg_low": false,
+        "dbg_pins": "",
+        "multi_cmd": false,
+        "enabled": true
+    },
+    {
+        "id": "a22f9a9cfae86295",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-blynk-iot": "1.0.1"
+        }
+    }
+]
